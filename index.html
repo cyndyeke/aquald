@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aqua Leak Detection | Non-Destructive Leak Detection Specialists</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2E5C;
+    --blue:#1968C9;
+    --sky:#3E96E8;
+    --red:#D6291E;
+    --paper:#F2F0EA;
+    --ink:#12181F;
+    --line:#D8D3C6;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  h1,h2,h3{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:0.3px;line-height:1.02;}
+  .kicker{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-style:italic;font-size:15px;color:var(--red);}
+
+  /* ---- top bar ---- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:var(--navy);
+    border-bottom:4px solid var(--red);
+  }
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;max-width:1180px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand img{height:52px;width:auto;border-radius:6px;}
+  .brand-text{font-family:'Barlow Condensed',sans-serif;color:var(--white);font-size:13px;letter-spacing:.4px;line-height:1.25;}
+  .brand-text b{display:block;font-family:'Anton',sans-serif;font-size:19px;color:var(--white);letter-spacing:.3px;}
+  nav{display:flex;gap:28px;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:16px;color:#E9EEF6;}
+  nav a:hover{color:var(--sky);}
+  .call-btn{
+    background:var(--red);color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:600;
+    padding:10px 18px;border-radius:4px;font-size:16px;white-space:nowrap;
+  }
+  @media (max-width:860px){ nav{display:none;} }
+
+  /* ---- hero ---- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:radial-gradient(circle at 78% 20%, var(--blue) 0%, var(--navy) 55%, #071F41 100%);
+    color:var(--white);
+    padding:76px 0 60px;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,0.10) 1.4px, transparent 1.4px);
+    background-size:14px 14px;
+    mask-image:linear-gradient(120deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.15) 60%);
+    opacity:.7;
+  }
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:center;}
+  @media (max-width:920px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{font-size:clamp(40px,6vw,68px);color:var(--white);}
+  .hero h1 span{color:var(--sky);}
+  .hero p.lede{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:500;color:#D7E4F7;margin-top:18px;max-width:46ch;}
+  .hero-ctas{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
+  .btn-primary{background:var(--red);color:var(--white);padding:15px 26px;border-radius:4px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;}
+  .btn-ghost{border:2px solid rgba(255,255,255,.55);color:var(--white);padding:13px 24px;border-radius:4px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;}
+  .hero-readout{
+    position:relative;background:#0A1830;border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:18px;
+    box-shadow:0 30px 60px rgba(0,0,0,.35);
+  }
+  .hero-readout img{border-radius:5px;}
+  .hero-readout .cap{font-family:'Barlow Condensed',sans-serif;color:#9FC0E8;font-size:14px;margin-top:10px;letter-spacing:.2px;}
+  .no-dig{
+    position:absolute;top:-14px;right:24px;background:var(--red);color:var(--white);
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;padding:7px 14px;border-radius:3px;
+    transform:rotate(3deg);box-shadow:0 6px 14px rgba(0,0,0,.3);
+  }
+
+  /* ---- trust bar ---- */
+  .trust{background:var(--white);border-bottom:1px solid var(--line);}
+  .trust .wrap{display:flex;justify-content:space-between;gap:20px;padding:22px 28px;flex-wrap:wrap;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:17px;color:var(--navy);}
+  .trust span{white-space:nowrap;}
+  .trust span::before{content:"●  ";color:var(--red);}
+
+  /* ---- section shell ---- */
+  section{padding:76px 0;}
+  .section-head{max-width:640px;margin-bottom:44px;}
+  .section-head h2{font-size:clamp(30px,4vw,42px);color:var(--navy);}
+  .section-head p{font-family:'Barlow Condensed',sans-serif;font-size:19px;color:#4B5563;margin-top:12px;}
+  .center{text-align:center;margin-left:auto;margin-right:auto;}
+
+  /* ---- services ---- */
+  .services{background:var(--white);}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);}
+  @media (max-width:860px){.svc-grid{grid-template-columns:1fr;}}
+  .svc{background:var(--white);padding:34px 30px;}
+  .svc .num{font-family:'Anton',sans-serif;font-size:15px;color:var(--red);}
+  .svc h3{font-size:24px;color:var(--navy);margin-top:10px;}
+  .svc p{margin-top:10px;color:#40474F;font-size:15px;}
+
+  /* ---- method ---- */
+  .method{background:var(--navy);color:var(--white);}
+  .method .section-head h2{color:var(--white);}
+  .method .section-head p{color:#C4D4EA;}
+  .m-list{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  @media (max-width:920px){.m-list{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.m-list{grid-template-columns:1fr;}}
+  .m-item{border-top:3px solid var(--sky);padding-top:16px;}
+  .m-item h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:21px;}
+  .m-item p{font-size:14.5px;color:#B9CBE3;margin-top:8px;}
+
+  /* ---- gallery ---- */
+  .gallery .section-head{max-width:720px;}
+  .g-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:10px;}
+  @media (max-width:920px){.g-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px;}}
+  .g-item{position:relative;overflow:hidden;border-radius:4px;background:#000;}
+  .g-item img{width:100%;height:100%;object-fit:cover;opacity:.92;transition:transform .5s ease;}
+  .g-item:hover img{transform:scale(1.06);}
+  .g-item .tag{
+    position:absolute;left:0;bottom:0;right:0;
+    background:linear-gradient(0deg, rgba(6,20,40,.92), rgba(6,20,40,0));
+    color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:14.5px;
+    padding:26px 12px 10px;
+  }
+  .g-item.tall{grid-row:span 2;}
+
+  /* ---- reviews ---- */
+  .reviews{background:var(--white);}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media (max-width:860px){.rev-grid{grid-template-columns:1fr;}}
+  .rev{border:1px solid var(--line);border-radius:6px;padding:26px;background:var(--paper);}
+  .rev .stars{color:var(--red);font-size:17px;letter-spacing:2px;}
+  .rev p{margin-top:12px;font-size:15.5px;color:#333;}
+  .rev .who{margin-top:16px;font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--navy);}
+
+  /* ---- contact ---- */
+  .contact{background:var(--navy);color:var(--white);}
+  .c-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:54px;}
+  @media (max-width:920px){.c-grid{grid-template-columns:1fr;}}
+  .contact h2{color:var(--white);font-size:clamp(28px,4vw,40px);}
+  .contact .lede{font-family:'Barlow Condensed',sans-serif;font-size:19px;color:#C4D4EA;margin-top:14px;max-width:40ch;}
+  .c-facts{margin-top:30px;display:flex;flex-direction:column;gap:16px;}
+  .c-facts div{display:flex;gap:12px;align-items:flex-start;font-family:'Barlow Condensed',sans-serif;font-size:18px;}
+  .c-facts b{color:var(--sky);font-weight:700;display:block;font-size:13px;letter-spacing:.3px;text-transform:uppercase;}
+
+  form.enquiry{background:var(--white);border-radius:8px;padding:30px;color:var(--ink);}
+  form.enquiry h3{color:var(--navy);font-size:22px;}
+  .f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+  @media (max-width:540px){.f-row{grid-template-columns:1fr;}}
+  .field{display:flex;flex-direction:column;gap:6px;margin-top:16px;}
+  .f-row .field{margin-top:0;}
+  label{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:14px;color:#374151;}
+  input,select,textarea{
+    border:1.5px solid var(--line);border-radius:4px;padding:11px 12px;font-family:'Inter',sans-serif;font-size:15px;background:var(--paper);
+  }
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--sky);outline-offset:1px;border-color:var(--sky);}
+  textarea{min-height:100px;resize:vertical;}
+  .submit-btn{margin-top:20px;width:100%;background:var(--red);color:var(--white);padding:15px;border:none;border-radius:4px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;cursor:pointer;}
+  .submit-btn:hover{background:#B7211A;}
+  .form-note{font-size:12.5px;color:#6B7280;margin-top:10px;}
+
+  /* ---- footer ---- */
+  footer{background:#071B36;color:#9FB2CC;padding:34px 0;}
+  .f-wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-family:'Barlow Condensed',sans-serif;font-size:14.5px;}
+  footer a:hover{color:var(--white);}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="topbar">
+    <div class="brand">
+      <img src="images/logo.png" alt="Aqua Leak Detection logo">
+      <div class="brand-text"><b>AQUA LEAK DETECTION</b>We find the living waters</div>
+    </div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#method">Our Method</a>
+      <a href="#work">Recent Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="call-btn" href="tel:+441000000000">Call [PHONE NUMBER PLACEHOLDER]</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker">NON-DESTRUCTIVE LEAK DETECTION</p>
+      <h1>WE FIND LEAKS<br><span>WITHOUT WRECKING</span><br>YOUR PROPERTY.</h1>
+      <p class="lede">Acoustic, thermal-imaging and tracer-gas detection that pinpoints hidden water and gas leaks to the inch — before anyone lifts a floor or breaks a wall.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#contact">Get a Free Assessment</a>
+        <a class="btn-ghost" href="tel:+441000000000">[PHONE NUMBER PLACEHOLDER]</a>
+      </div>
+    </div>
+    <div class="hero-readout">
+      <span class="no-dig">PINPOINT ACCURACY</span>
+      <img src="images/work13.jpeg" alt="Acoustic leak detection reading on site">
+      <p class="cap">Live acoustic correlation reading — 897 correlation strength, leak pinpointed beneath tile before a single tile was lifted.</p>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap trust">
+    <span>Fully insured &amp; certified engineers</span>
+    <span>Thermal, acoustic &amp; tracer-gas equipment</span>
+    <span>No-find, no-fee assessments</span>
+    <span>Domestic &amp; commercial callouts</span>
+  </div>
+</div>
+
+<section id="services" class="services">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">WHAT WE DO</p>
+      <h2>Leak detection for water, gas &amp; drainage</h2>
+      <p>Every job starts the same way: find the leak precisely, before any digging or demolition starts.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <p class="num">01</p>
+        <h3>Water Leak Detection</h3>
+        <p>Rising bills, damp patches, or a spinning water meter with everything switched off — we trace supply-pipe and slab leaks using acoustic correlation and thermal imaging, indoors and out.</p>
+      </div>
+      <div class="svc">
+        <p class="num">02</p>
+        <h3>Gas Leak Tracing</h3>
+        <p>Tracer-gas surveys locate escapes beneath patios, driveways and solid floors that a standard gas safety check can't reach, with readings logged on site.</p>
+      </div>
+      <div class="svc">
+        <p class="num">03</p>
+        <h3>Drainage &amp; Damp Investigation</h3>
+        <p>CCTV drain surveys, moisture mapping and nitrate/chlorine testing to confirm whether a stain is a live leak, an old one, or something else entirely.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="method" class="method">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker" style="color:#3E96E8;">HOW WE WORK</p>
+      <h2>Four steps, zero guesswork</h2>
+      <p>The same equipment utility companies use — deployed on your property, with a written report at the end.</p>
+    </div>
+    <div class="m-list">
+      <div class="m-item">
+        <h4>1. Listen</h4>
+        <p>Acoustic correlators and ground microphones narrow the search area along the pipe run.</p>
+      </div>
+      <div class="m-item">
+        <h4>2. Image</h4>
+        <p>Thermal cameras map temperature anomalies under floors, ceilings and render to confirm the hotspot.</p>
+      </div>
+      <div class="m-item">
+        <h4>3. Confirm</h4>
+        <p>Tracer gas and moisture/nitrate testing rule out false positives before we mark a dig point.</p>
+      </div>
+      <div class="m-item">
+        <h4>4. Report</h4>
+        <p>You get a marked-up plan and photo evidence — for your own records or to hand to a plumber or insurer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">FROM SITE</p>
+      <h2>Recent leak finds</h2>
+      <p>A sample of readings, thermal images and confirmed leak points from recent callouts.</p>
+    </div>
+    <div class="g-grid">
+      <div class="g-item tall"><img src="images/work8.jpeg" alt="Gas readings rising from beneath a patio"><span class="tag">Gas tracer readings rising beneath a patio slab</span></div>
+      <div class="g-item"><img src="images/work3.jpeg" alt="Thermal image showing a hotspot on a stone floor"><span class="tag">Thermal hotspot pinpointed on kitchen floor</span></div>
+      <div class="g-item"><img src="images/work7.jpeg" alt="Water meter showing movement with supply off"><span class="tag">Confirmed movement on the water meter</span></div>
+      <div class="g-item"><img src="images/work1.jpeg" alt="Acoustic correlator reading on a tiled floor"><span class="tag">Acoustic correlation survey in progress</span></div>
+      <div class="g-item tall"><img src="images/work9.jpeg" alt="Thermal image of a ceiling showing a leak trace"><span class="tag">Wall trace confirmed by thermal imaging</span></div>
+      <div class="g-item"><img src="images/work4.jpeg" alt="Under-sink pipework inspection"><span class="tag">Under-sink pipework inspection</span></div>
+      <div class="g-item"><img src="images/work6.jpeg" alt="Nitrate testing kit used to confirm a leak source"><span class="tag">Nitrate testing to confirm leak source</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="reviews">
+  <div class="wrap">
+    <div class="section-head center">
+      <p class="kicker">WHAT CUSTOMERS SAY</p>
+      <h2>Trusted to find it first time</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>"Found the leak under our kitchen floor in under an hour — no exploratory digging needed. Saved us thousands versus what the first plumber quoted to 'take the floor up and see.'"</p>
+        <p class="who">— Verified customer, [Client testimonial placeholder]</p>
+      </div>
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>"Professional, punctual and explained every reading as they went. The report was exactly what our insurer needed."</p>
+        <p class="who">— Verified customer, [Client testimonial placeholder]</p>
+      </div>
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>"Water bill had doubled with no obvious cause. They confirmed movement on the meter, traced it to a supply pipe, and marked the exact dig point for our contractor."</p>
+        <p class="who">— Verified customer, [Client testimonial placeholder]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap c-grid">
+    <div>
+      <p class="kicker" style="color:#3E96E8;">GET IN TOUCH</p>
+      <h2>Talk to us before anyone breaks ground</h2>
+      <p class="lede">Tell us what you're seeing — a damp patch, a rising bill, a smell of gas — and we'll advise whether a survey is the right next step.</p>
+      <div class="c-facts">
+        <div><b>Phone</b>[PHONE NUMBER PLACEHOLDER]</div>
+        <div><b>Email</b>enquiries@agualeakdetection.com</div>
+        <div><b>Coverage</b>Domestic &amp; commercial callouts</div>
+      </div>
+    </div>
+
+    <form class="enquiry" name="enquiry" method="POST" action="#" onsubmit="return false;">
+      <h3>Request a Free Assessment</h3>
+
+      <div class="field">
+        <label for="title">Title</label>
+        <select id="title" name="title">
+          <option>Mr</option>
+          <option>Mrs</option>
+          <option>Ms</option>
+          <option>Dr</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="f-row">
+        <div class="field">
+          <label for="fname">Your first name*</label>
+          <input id="fname" name="first_name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="lname">Your surname*</label>
+          <input id="lname" name="surname" type="text" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email address*</label>
+        <input id="email" name="email" type="email" required>
+      </div>
+
+      <div class="f-row">
+        <div class="field">
+          <label for="phone">Daytime phone number*</label>
+          <input id="phone" name="phone" type="tel" required>
+        </div>
+        <div class="field">
+          <label for="postcode">Your postcode (optional)</label>
+          <input id="postcode" name="postcode" type="text">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="message">Write your message</label>
+        <textarea id="message" name="message" placeholder="Tell us what's happening — where, since when, any bills or damp you've noticed."></textarea>
+      </div>
+
+      <button class="submit-btn" type="submit">Send Enquiry</button>
+      <p class="form-note">On Squarespace, wire this form to a Form Block set to email enquiries@agualeakdetection.com — see build notes.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap f-wrap">
+    <span>© 2026 Aqua Leak Detection. All rights reserved.</span>
+    <span><a href="mailto:enquiries@agualeakdetection.com">enquiries@agualeakdetection.com</a> &nbsp;·&nbsp; [PHONE NUMBER PLACEHOLDER]</span>
+  </div>
+</footer>
+
+</body>
+</html>
